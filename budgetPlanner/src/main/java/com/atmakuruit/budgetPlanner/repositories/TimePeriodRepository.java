@@ -11,4 +11,9 @@ public interface TimePeriodRepository extends JpaRepository<TimePeriod, Integer>
 	TimePeriod findByYearAndMonth(String year, String month);
 
 	List<TimePeriod> findByYear(String valueOf);
+
+	void deleteAllByYear(String year);
+
+	void deleteById(Integer Id);
+
 }
