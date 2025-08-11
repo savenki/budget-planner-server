@@ -1,6 +1,7 @@
 package com.atmakuruit.budgetPlanner.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,28 +10,32 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="planners")
+@Table(name = "planners")
 public class Planners {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
-	
-	@Column(length = 50, nullable = false, name="username")
+
+	@Column(length = 50, nullable = false, name = "username")
 	private String userName;
-	
-	@Column(length= 255, nullable=false)
+
+	@Column(length = 255, nullable = false)
 	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
-	
-	@Column(length= 100, nullable=false)
+
+	@Column(length = 100, nullable = false)
 	private String email;
-	
-	@Column(name="created_at")
+
+	@Column(name = "created_at")
 	private LocalDate createdAt;
+
+	@OneToMany(mappedBy = "planners")
+	private List<Segment> segments;
 
 	public Integer getId() {
 		return Id;
@@ -71,6 +76,15 @@ public class Planners {
 	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	public List<Segment> getSegments() {
+		return segments;
+	}
+
+	public void setSegments(List<Segment> segments) {
+		this.segments = segments;
+	}
 	
 	
+
 }
