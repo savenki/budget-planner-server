@@ -3,6 +3,7 @@ package com.atmakuruit.budgetPlanner.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
@@ -17,74 +18,72 @@ import jakarta.persistence.Table;
 @Table(name = "planners")
 public class Planners {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer Id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer Id;
 
-	@Column(length = 50, nullable = false, name = "username")
-	private String userName;
+    @Column(length = 50, nullable = false, name = "username")
+    private String userName;
 
-	@Column(length = 255, nullable = false)
-	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-	private String password;
+    @Column(length = 255, nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
 
-	@Column(length = 100, nullable = false)
-	private String email;
+    @Column(length = 100, nullable = false)
+    private String email;
 
-	@Column(name = "created_at")
-	private LocalDate createdAt;
+    @Column(name = "created_at")
+    private LocalDate createdAt;
 
-	@OneToMany(mappedBy = "planners")
-	private List<Segment> segments;
+    @OneToMany(mappedBy = "planners")
+    @JsonIgnore
+    private List<Segment> segments;
 
-	public Integer getId() {
-		return Id;
-	}
+    public Integer getId() {
+        return Id;
+    }
 
-	public void setId(Integer id) {
-		Id = id;
-	}
+    public void setId(Integer id) {
+        Id = id;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public LocalDate getCreatedAt() {
-		return createdAt;
-	}
+    public LocalDate getCreatedAt() {
+        return createdAt;
+    }
 
-	public void setCreatedAt(LocalDate createdAt) {
-		this.createdAt = createdAt;
-	}
+    public void setCreatedAt(LocalDate createdAt) {
+        this.createdAt = createdAt;
+    }
 
-	public List<Segment> getSegments() {
-		return segments;
-	}
+    public List<Segment> getSegments() {
+        return segments;
+    }
 
-	public void setSegments(List<Segment> segments) {
-		this.segments = segments;
-	}
-	
-	
-
+    public void setSegments(List<Segment> segments) {
+        this.segments = segments;
+    }
 }

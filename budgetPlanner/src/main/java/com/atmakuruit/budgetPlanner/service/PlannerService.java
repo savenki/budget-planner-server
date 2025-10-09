@@ -25,10 +25,16 @@ public class PlannerService {
 	
 	public String deletePlannerByEmail(String email) throws Exception {
 		try {
-			this.plannersRepository.deleteByEmail(email);
-			return "Delete Successful";
-		}catch(Exception e) {
-			throw new Exception(e);
+			try {
+				this.plannersRepository.deleteByEmail(email);
+				return "Delete Successful";
+			}catch(Exception e) {
+				throw new Exception(e);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		return email;
 	}
 }
