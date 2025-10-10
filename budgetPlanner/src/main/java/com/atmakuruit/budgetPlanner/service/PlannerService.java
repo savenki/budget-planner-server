@@ -7,7 +7,12 @@ import org.springframework.stereotype.Service;
 import com.atmakuruit.budgetPlanner.model.Planners;
 import com.atmakuruit.budgetPlanner.repositories.PlannersRepository;
 
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Log4j
 public class PlannerService {
 
 	private final PlannersRepository plannersRepository;
@@ -15,8 +20,11 @@ public class PlannerService {
 		this.plannersRepository = plannersRepository;
 	}
 	
-	public List<Planners> getPlanners(){
-		return this.plannersRepository.findAll();
+	public List<Planners> getPlanners() {
+	    List<Planners> planners = this.plannersRepository.findAll();
+
+		
+	    return planners;
 	}
 	
 	public List<Planners> getPlannerByEmail(String valueOf){

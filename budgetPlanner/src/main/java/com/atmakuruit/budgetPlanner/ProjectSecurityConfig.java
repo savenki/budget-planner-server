@@ -19,6 +19,7 @@ public class ProjectSecurityConfig {
 	            .authorizeHttpRequests()
 	                .requestMatchers(PathRequest.toH2Console()).permitAll()
 	                .requestMatchers("/", "/error", "/budgetPlanner/**").permitAll()
+	                .requestMatchers("/browser/**", "/profile/**").permitAll()
 	                .requestMatchers("/actuator/**").hasRole("ADMIN")
 	                .anyRequest().authenticated()
 	            .and()

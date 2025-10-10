@@ -6,12 +6,14 @@ package com.atmakuruit.budgetPlanner.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.atmakuruit.budgetPlanner.model.Planners;
 
 /**
  * 
  */
+@RepositoryRestResource
 public interface PlannersRepository extends JpaRepository<Planners, Integer> {
 
 	public List<Planners> findByUserName(String valueOf);

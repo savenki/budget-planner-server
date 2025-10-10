@@ -3,9 +3,11 @@ package com.atmakuruit.budgetPlanner.repositories;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.atmakuruit.budgetPlanner.model.TimePeriod;
 
+@RepositoryRestResource
 public interface TimePeriodRepository extends JpaRepository<TimePeriod, Integer> {
 
 	TimePeriod findByYearAndMonth(String year, String month);

@@ -4,10 +4,13 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.atmakuruit.budgetPlanner.model.Planners;
 import com.atmakuruit.budgetPlanner.model.Segment;
 import com.atmakuruit.budgetPlanner.model.TimePeriod;
+
+@RepositoryRestResource
 
 public interface SegmentRepository extends JpaRepository<Segment, Integer> {
 
